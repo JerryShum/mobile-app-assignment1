@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".BudgetBalanceActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Monthly Budget Planner"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="16dp"
+        style="@style/TextAppearance.AppCompat.Title"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Monthly Income:"
+        style="@style/TextAppearance.AppCompat.Subhead"
+        />
+        
+    <EditText
+        android:id="@+id/et_income"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter monthly income"
+        android:inputType="numberDecimal"
+        android:layout_marginBottom="8dp"
+        style="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Total Monthly Expenses (excluding EMI):"
+        style="@style/TextAppearance.AppCompat.Subhead"
+        />
+    <EditText
+        android:id="@+id/et_expenses"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter total monthly expenses"
+        android:inputType="numberDecimal"
+        android:layout_marginBottom="8dp"
+        style="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Monthly EMI:"
+        style="@style/TextAppearance.AppCompat.Subhead"
+        />
+    <EditText
+        android:id="@+id/et_emi_paid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter your monthly EMI"
+        android:inputType="numberDecimal"
+        android:layout_marginBottom="16dp"
+        style="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle"
+        />
+
+    <Button
+        android:id="@+id/btn_calculate_budget"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:backgroundTint="#9251BEFF"
+        android:text="Calculate Budget Balance"/>
+        
+
+    <TextView
+        android:id="@+id/tv_budget_result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Monthly Savings/Deficit: $0.00"
+        android:textSize="18sp"
+        android:textStyle="bold"/>
+        
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#FF9E9E"
+        android:text="Back"
+        android:translationY="300px"
+        />
+        
+
+
+</LinearLayout>

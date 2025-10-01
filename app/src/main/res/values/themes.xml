@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.Assignment1EMI" parent="android:Theme.Material.Light.NoActionBar" />
+    <item name="android.fontFamily" type="font">@font/nunito_font</item>
+
+</resources>

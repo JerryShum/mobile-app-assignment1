@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".EmiCalculatorActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="EMI Calculator"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        style="@style/TextAppearance.AppCompat.Title"
+        />
+
+    <EditText
+        android:id="@+id/et_loan_amount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:hint="Loan Amount (e.g., 100000)"
+        android:inputType="numberDecimal"
+        style="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle"
+        />
+
+
+    <EditText
+        android:id="@+id/et_interest_rate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:hint="Annual Interest Rate (%) (e.g., 8.5)"
+        android:inputType="numberDecimal"
+        style="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle"
+        />
+
+    <EditText
+        android:id="@+id/et_tenure"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:hint="Tenure (Years) (e.g., 20)"
+        android:inputType="number"
+        style="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle"
+        />
+
+    <Button
+        android:id="@+id/btn_calculate_emi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:backgroundTint="#9251BEFF"
+        android:text="Calculate EMI" />
+
+    <TextView
+        android:id="@+id/tv_monthly_emi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Monthly EMI: $0.00"
+        android:textSize="18sp"
+        android:textStyle="italic" />
+
+    <Button
+        android:id="@+id/btn_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#FF9E9E"
+        android:text="Back"
+        android:translationY="500px" />
+
+</LinearLayout>
