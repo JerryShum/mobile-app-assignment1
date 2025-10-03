@@ -2,6 +2,7 @@ package com.example.assignment1_emi
 // BudgetBalanceActivity.kt
 
 import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -21,7 +22,7 @@ class BudgetBalanceActivity : Activity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_budget_balance)
 
-        // Initialize views
+        // initialize views (EditTexts and textviews and buttons)
         etIncome = findViewById(R.id.et_income)
         etExpenses = findViewById(R.id.et_expenses)
         etEmiPaid = findViewById(R.id.et_emi_paid)
@@ -31,42 +32,46 @@ class BudgetBalanceActivity : Activity() {
         btnCalculateBudget.setOnClickListener {
             calculateBudget()
         }
+
+        val backButton: Button = findViewById(R.id.btn_back);
+
+        backButton.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun calculateBudget() {
-        // 1. Validate Input (Simple check)
+        // get user the input values
         val incomeStr = etIncome.text.toString()
         val expensesStr = etExpenses.text.toString()
         val emiStr = etEmiPaid.text.toString()
 
+        //send toast
         if (incomeStr.isBlank() || expensesStr.isBlank() || emiStr.isBlank()) {
             Toast.makeText(this, "Please enter all fields", Toast.LENGTH_SHORT).show()
             return
         }
 
-        // 2. Parse Input
+        // parse and convert input values
         try {
             val income = incomeStr.toDouble()
             val expenses = expensesStr.toDouble()
             val emi = emiStr.toDouble()
 
-            // 3. Calculation
+            // calculations
             val totalExpense = expenses + emi
             val balance = income - totalExpense
 
-            // 4. Format and Display Output
+            // format and display value
             val formatter = DecimalFormat("##,##0.00")
             val resultText: String
 
             if (balance >= 0) {
                 resultText = "Monthly Savings: $${formatter.format(balance)}"
-                // Optional: Change text color to green for savings
-                tvBudgetResult.setTextColor(resources.getColor(android.R.color.holo_green_dark))
             } else {
                 // balance is negative, indicating deficit
                 resultText = "Monthly Deficit: $${formatter.format(Math.abs(balance))}"
-                // Optional: Change text color to red for deficit
-                tvBudgetResult.setTextColor(resources.getColor(android.R.color.holo_red_dark))
             }
 
             tvBudgetResult.text = resultText
