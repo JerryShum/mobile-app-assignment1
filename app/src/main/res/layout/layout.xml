@@ -3,20 +3,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center_horizontal"
     android:orientation="vertical"
     android:padding="16dp"
-    android:gravity="center_horizontal"
+    android:translationY="250px"
     tools:context=".MainActivity">
 
     <TextView
+        style="@style/TextAppearance.AppCompat.Title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
         android:text="EZ Budget Planner"
         android:textSize="24sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="32dp"
-        style="@style/TextAppearance.AppCompat.Title"
-        />
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/btn_emi_calculator"
@@ -24,8 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:backgroundTint="#8BC34A"
-        android:text="EMI Calculator"
-        />
+        android:text="EMI Calculator" />
 
     <Button
         android:id="@+id/btn_budget_balance"
@@ -33,7 +32,6 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:backgroundTint="#C800BCD4"
-        android:text="Income &amp; Expense Tracker"
-        />
+        android:text="Income &amp; Expense Tracker" />
 
 </LinearLayout>
