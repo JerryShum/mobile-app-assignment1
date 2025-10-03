@@ -17,6 +17,15 @@
         style="@style/TextAppearance.AppCompat.Title"
         />
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Loan Amount"
+        android:textAlignment="viewStart"
+        android:textStyle="bold"
+        android:typeface="normal" />
+
     <EditText
         android:id="@+id/et_loan_amount"
         android:layout_width="match_parent"
@@ -28,6 +37,15 @@
         />
 
 
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Interest Rate"
+        android:textAlignment="viewStart"
+        android:textStyle="bold"
+        android:typeface="normal" />
+
     <EditText
         android:id="@+id/et_interest_rate"
         android:layout_width="match_parent"
@@ -37,6 +55,15 @@
         android:inputType="numberDecimal"
         style="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle"
         />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tenure (Number of Years)"
+        android:textAlignment="viewStart"
+        android:textStyle="bold"
+        android:typeface="normal" />
 
     <EditText
         android:id="@+id/et_tenure"

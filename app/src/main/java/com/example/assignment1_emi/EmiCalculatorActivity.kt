@@ -47,47 +47,69 @@ class EmiCalculatorActivity : Activity() {
     }
 
     private fun calculateEmi() {
-        // 1. Validate Input
+        // get the user input from edittext fields
         val principalStr = etLoanAmount.text.toString()
         val rateStr = etInterestRate.text.toString()
         val tenureStr = etTenure.text.toString()
 
+        // send toast if user presses button without filling up all fields
         if (principalStr.isBlank() || rateStr.isBlank() || tenureStr.isBlank()) {
             Toast.makeText(this, "Please enter all fields", Toast.LENGTH_SHORT).show()
             return
         }
 
-        // 2. Parse Input (Handle potential number format exceptions)
+        // parse the inputs to turn them into the correct values/types
         try {
-            val principal = principalStr.toDouble()
+            // P = Principal Loan Amount
+            val principalAmount = principalStr.toDouble()
+            // R_annual = Annual Interest Rate
             val annualRatePercent = rateStr.toDouble()
-            val years = tenureStr.toInt()
+            // Y = Tenure in Years
+            val tenureYears = tenureStr.toInt()
 
-            // 3. Convert to Monthly Rate and Total Months
-            // R = Monthly Interest Rate = (Annual Rate / 12 / 100)
-            val monthlyRate = (annualRatePercent / 12) / 100.0
-            // N = Total Number of Payments = Years * 12
-            val months = years * 12
+            // convert Annual Inputs to Monthly Inputs (easier to work with)
 
-            // 4. EMI Formula Calculation
-            if (monthlyRate > 0) {
-                // Formula: P * [ R * (1+R)^N ] / [ (1+R)^N – 1 ]
-                val powerTerm = (1.0 + monthlyRate).pow(months.toDouble())
-                val emi = principal * monthlyRate * powerTerm / (powerTerm - 1.0)
+            // monthlyrate calculation
+            val monthlyInterestRate = (annualRatePercent / 100.0) / 12.0
 
-                // 5. Format and Display Output
+            // N = total number of payments (# of months)
+            val totalPaymentMonths = tenureYears * 12
+
+            // calculate EMI using all variables
+            if (monthlyInterestRate > 0) {
+                // formula: EMI = P * [ R * (1+R)^N ] / [ (1+R)^N – 1 ]
+
+                // (1 + R)^N is called the "power term"  / future value factor
+                val futureValueFactor = (1.0 + monthlyInterestRate).pow(totalPaymentMonths.toDouble())
+
+                // numerator portion of the EMI formula: P * R * (1+R)^N
+                val numerator = principalAmount * monthlyInterestRate * futureValueFactor
+
+                // denominator of the EMI formula: (1+R)^N - 1
+                val denominator = futureValueFactor - 1.0
+
+                // final EMI calculation
+                val monthlyEmi = numerator / denominator
+
+                // format and display output
                 val formatter = DecimalFormat("##,##0.00")
-                tvMonthlyEmi.text = "Monthly EMI: $${formatter.format(emi)}"
+                tvMonthlyEmi.text = "Monthly EMI: $${formatter.format(monthlyEmi)}"
+
             } else {
-                // Simple principal / months calculation if rate is 0
-                val emi = principal / months
+                // special case where the interest rate is 0
+                // EMI = principal / total months
+                val monthlyEmi = principalAmount / totalPaymentMonths
+
+                // format and display for 0% rate
                 val formatter = DecimalFormat("##,##0.00")
-                tvMonthlyEmi.text = "Monthly EMI: $${formatter.format(emi)}"
+                tvMonthlyEmi.text = "Monthly EMI: $${formatter.format(monthlyEmi)}"
             }
 
         } catch (e: NumberFormatException) {
+            // catching a numberformatexception (error occurred since user entered an incorrect format)
             Toast.makeText(this, "Invalid number format entered", Toast.LENGTH_SHORT).show()
         } catch (e: Exception) {
+            // catching all other errors
             Toast.makeText(this, "An error occurred: ${e.message}", Toast.LENGTH_LONG).show()
         }
     }
